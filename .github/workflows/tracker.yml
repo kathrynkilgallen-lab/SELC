@@ -28,7 +28,7 @@ jobs:
           pip install requests
 
       - name: Run tracking script
-        run: python Script
+        run: python Script.py
 
       - name: Commit and push updated CSV
         run: |
