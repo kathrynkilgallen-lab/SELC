@@ -3,7 +3,7 @@ name: SELC Tracker
 on:
   schedule:
     # Runs every Sunday at 13:00 UTC (8:00 AM EST)
-    - cron: '30 23 * * *'
+    - cron: '45 23 * * *'
   workflow_dispatch: # Allows you to manually trigger the script anytime via the GitHub UI
 
 permissions:
