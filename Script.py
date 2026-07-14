@@ -1,4 +1,8 @@
 # The exact URL you provided for North Carolina filtered press releases
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
 url = "https://www.selc.org/press-release/?_states=north-carolina"
 
 # Define a standard browser header so the request flows smoothly
@@ -45,6 +49,9 @@ if response.status_code == 200:
     # Convert list to an interactive Pandas DataFrame
     df = pd.DataFrame(press_releases)
     print(f"Successfully loaded {len(df)} recent North Carolina press releases!")
+    # Save using the lowercase filename the workflow expects
+    df.to_csv('SELC.csv', index=False)
 else:
     print(f"Failed to fetch page. Status code: {response.status_code}")
-df.to_csv('SELC.CSV', index=False)
+    # create an empty CSV so the workflow's git add/commit step still has a file to work with
+    pd.DataFrame().to_csv('SELC.csv', index=False)
